@@ -1,9 +1,6 @@
-Template for the Read the Docs tutorial
+ReadTheDocs instructions for Computational resources in the Computational Oncology group
 =======================================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This repository hosts the code that is used to generate the ReadTheDocs page hosted at https://computational-oncology-compute-instructions.readthedocs.io/en/
 
-Read the tutorial here:
-
-https://docs.readthedocs.io/en/stable/tutorial/
+See link for the actual instructions

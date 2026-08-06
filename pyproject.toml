@@ -3,6 +3,6 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "lumache"
-authors = [{name = "Graziella", email = "graziella@lumache"}]
-dynamic = ["version", "description"]
+name = "computationaloncology-compute-instructions"
+authors = [{name = "Roy Oelen", email = "r.oelen@umcg.ln"}]
+dynamic = ["v0.1", "Computational Oncology compute instructions"]

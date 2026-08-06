@@ -3,8 +3,8 @@
 # -- Project information
 
 project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+copyright = '2026, Computation Oncology UMCG'
+author = 'Roy Oelen'
 
 release = '0.1'
 version = '0.1.0'
@@ -17,6 +17,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'sphinx_copybutton'
 ]
 
 intersphinx_mapping = {

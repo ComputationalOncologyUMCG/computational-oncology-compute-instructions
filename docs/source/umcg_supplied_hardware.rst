@@ -16,18 +16,18 @@ These machines generally do not allow you to install software that requires admi
 Portable hardware
 -----------------------------
 
-If you need portable hardware, you can request a laptop via the `bestelportaal <https://ictbestelportaal.umcg.nl/>`. You will have a hardware profile, which determines which hardware you can order. You can order only one machine, so be sure to select the correct one. There is both the option for a Windows (11) laptop or an Apple MacBook Air.
+If you need portable hardware, you can request a laptop via the `bestelportaal <https://ictbestelportaal.umcg.nl/>`_. You will have a hardware profile, which determines which hardware you can order. You can order only one machine, so be sure to select the correct one. There is both the option for a Windows (11) laptop or an Apple MacBook Air.
 
 
 .. _portable_windows_hardware:
 Portable Windows hardware
 -----------------------------
 
-UMCG Windows laptops, like fixed-position Windows machines do not ship with adminstrator by default. To install your own software, you will need to request administrator privileges. To use Linux-based software on Windows machines, you can make use of `WSL <https://learn.microsoft.com/en-us/windows/wsl/install/>`.
+UMCG Windows laptops, like fixed-position Windows machines do not ship with adminstrator by default. To install your own software, you will need to request administrator privileges. To use Linux-based software on Windows machines, you can make use of `WSL <https://learn.microsoft.com/en-us/windows/wsl/install/>`_.
 
 
 .. _portable_windows_hardware:
 Portable Mac hardware
 -----------------------------
 
-UMCG MacBooks ship with administrator privileges, allowing you to install your own software. A lot of Linux software is also available on Mac OS. Consider using `brew <https://brew.sh/>`. for installing this type of software, as this will give you a package manager to better track installed software.
+UMCG MacBooks ship with administrator privileges, allowing you to install your own software. A lot of Linux software is also available on Mac OS. Consider using `brew <https://brew.sh/>`_. for installing this type of software, as this will give you a package manager to better track installed software.

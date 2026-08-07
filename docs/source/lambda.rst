@@ -38,7 +38,6 @@ Known issues
 There are some small issues with the machine that we are aware of
 
 - the front USB ports can give overcurrent warnings. Please use the back USB ports.
-- hardware acceleration is broken on Firefox. The newest Nvidia driver has an issue with the newest Firefox version. Use a different browser such as LibreWolf or start Firefox in safe mode and disable hardware acceleration.
 - openBLAS is used instead of Intel MKL. Linking the superior Intel MKL is currently broken and the (still good but not as good) OpenBLAS implementation is used instead.
 
 Please let the administrators know if you run into any more issues.

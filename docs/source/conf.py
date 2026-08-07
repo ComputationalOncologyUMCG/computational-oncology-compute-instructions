@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Lumache'
+project = 'Compute in Computational Oncology UMCG'
 copyright = '2026, Computation Oncology UMCG'
 author = 'Roy Oelen'
 

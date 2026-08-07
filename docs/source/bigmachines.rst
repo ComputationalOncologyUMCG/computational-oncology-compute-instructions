@@ -27,7 +27,7 @@ In addition to the key, you also need to have the Global Secure Access Client ap
 Connecting to the BMs using command line SSH
 --------------------------------------------
 
-To connect to the BMs on the command line, or to use port forwarding to the BMs, you need to have set up your .ssh config correctly. On Mac/Linux/WSL, you can make use of this `zip <https://drive.google.com/file/d/1QeKTN3RGofhzrUYNcPYuqHXw_RpHOaRt/view?usp=drive_link>`. Unzip it and put the CONTENTS into the .ssh folder in your home directory.
+To connect to the BMs on the command line, or to use port forwarding to the BMs, you need to have set up your .ssh config correctly. On Mac/Linux/WSL, you can make use of this `zip <https://drive.google.com/file/d/1QeKTN3RGofhzrUYNcPYuqHXw_RpHOaRt/view?usp=drive_link>`_. Unzip it and put the CONTENTS into the .ssh folder in your home directory.
 
 Your folder should en up looking like this:
 
@@ -65,13 +65,13 @@ These are the specifications of the different BMs
 +---------+---------------+-----------------------------------+-------+-----------------------------------------+
 | Machine | IP            | CPU                               | RAM   | GPUs                                    |
 +=========+===============+===================================+=======+=========================================+
-| BM1     |  145.39.86.19 | Intel Xeon 8160                   |  754G | 2 x Nvidia Quadro RTX 8000 50GB         |
+| BM1     |  145.39.86.19 | Intel Xeon 8160                   |  754G | 2 x NVIDIA Quadro RTX 8000 50GB         |
 +---------+---------------+-----------------------------------+-------+-----------------------------------------+
-| BM2     |  145.39.86.26 | Intel Xeon Gold 6258R             | 1024G | 2 x Nvidia Quadro RTX 8000 50GB         |
+| BM2     |  145.39.86.26 | Intel Xeon Gold 6258R             | 1024G | 2 x NVIDIA Quadro RTX 8000 50GB         |
 +---------+---------------+-----------------------------------+-------+-----------------------------------------+
 | BM3     |  145.39.86.23 | Intel Xeon Platinum 8380          | 2048G | 2 x NVIDIA RTX 6000 Ada 50GB            |
 +---------+---------------+-----------------------------------+-------+-----------------------------------------+
-| BM4     |  145.39.86.15 | AMD Ryzen Threadripper PRO 7985WX |  500G | 2 x Nvidia RTX PRO 6000 Blackwell 100GB |
+| BM4     |  145.39.86.15 | AMD Ryzen Threadripper PRO 7985WX |  500G | 2 x NVIDIA RTX PRO 6000 Blackwell 100GB |
 +---------+---------------+-----------------------------------+-------+-----------------------------------------+
 
 
@@ -86,3 +86,4 @@ The BMs are shared among the users in the Computational Oncology group. They are
 - communicate with your colleagues that your are using resources on these machines, so they know what is available and what is not.
 - try to estimate the amount of resources you will consume, and the amount of resources still available on the machine, to not crash process already running on the machine.
 - due to an inpending grant deadline, it might be that one of your colleagues has taken up a majority of the resources on the big machines. Please be understanding of these situations, while also taking into consideration what would be fair use.
+- only run work-related tasks on these machine unless you were granted permissions to do so. (No running your own Minecraft server or mining Bitcoins)

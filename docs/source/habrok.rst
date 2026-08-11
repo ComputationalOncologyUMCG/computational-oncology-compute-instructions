@@ -141,11 +141,116 @@ Finally, we need to also do this forward on our local machine. Here we will forw
     ssh -N -f -L localhost:8811:localhost:8811 hblogin1
 
 
-Now, we can use jupyter lab in the browser, but going to that port in your browser. 
+Now, we can use jupyter lab in the browser, by going to that port in your browser. 
 
 .. image:: images/habrok/jupyterlabbrowser.png
    :alt: jupyterlabbrowser
    :width: 80%
+
+
+If instead you want to use Visual Studio Code, first install `Remote SSH extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_
+
+In VSCode, click the search bar:
+
+.. image:: images/habrok/vscodesearch.png
+   :alt: vscodesearch
+   :width: 80%
+
+
+Then select 'Show and Run commands'
+
+.. image:: images/habrok/vscodecommand.png
+   :alt: vscodecommand
+   :width: 80%
+
+
+And select 'Remote-SSH: Connect to Host...' (start typing 'Remote-SSH' to find it faster)
+
+.. image:: images/habrok/vscodessh.png
+   :alt: vscodessh
+   :width: 80%
+
+
+Select the node that you forwarded to (hblogin1, hblogin2, etc.) and click connect.
+
+.. image:: images/habrok/vscodessh.png
+   :alt: vscodessh
+   :width: 80%
+
+
+It might take a while to connect. If you have trouble connecting, try to connect once via the terminal first, and then try again in VSCode.
+
+.. image:: images/habrok/vscodeconnected.png
+   :alt: vscodeconnected
+   :width: 80%
+
+
+Open a folder, or a file, and select a jupyter notebook file. Or create a jupyter notebook file.
+
+.. image:: images/habrok/vscodebrowse.png
+   :alt: vscodebrowse
+   :width: 80%
+
+
+Then, click 'Select Kernel'.
+
+.. image:: images/habrok/vscodeselect.png
+   :alt: vscodeselect
+   :width: 80%
+
+
+Select 'Existing Jupyter Server' (if you do not see this option, make sure you have the Jupyter extension installed in VSCode)
+
+.. image:: images/habrok/vscodeexisting.png
+   :alt: vscodeexisting
+   :width: 80%
+
+
+Then, select 'Enter the URL of the running Jupyter server'
+
+.. image:: images/habrok/vscodeurl.png
+   :alt: vscodeurl
+   :width: 80%
+
+
+The URL you will need to add is 
+
+- localhost
+- the port you selected
+- the token you got from the jupyter lab output
+
+pasted together like this: **http://localhost:8865/lab?token=1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13**
+
+.. image:: images/habrok/vscodetoken.png
+   :alt: vscodetoken
+   :width: 80%
+
+
+When asked for a name, just make it blank. Now you can choose the kernel. If you have an existing notebook kernel already running, you can connect to that one. You can also start a new one.
+
+.. image:: images/habrok/vscodenotebook.png
+   :alt: vscodenotebook
+   :width: 80%
+   
+
+Now you can use Jupyter Lab in VSCode, while the computations are running on Habrok.
+
+
+To stop an interactive session, and thus the jupyter lab server, first see which screen sessions are running. On the node you logged into (hblogin1, hblogin2, etc.) do this:
+
+.. code-block:: bash
+
+    screen -ls
+
+
+This will show you the screen sessions that are running. You can then re-attach to the screen by its name or ID:
+
+.. code-block:: bash
+
+    screen -r jupyter_lab
+
+
+Kill the jupyter lab server with CTRL+C, then select 'y' to confirm stopping it. Then type 'exit' to exit the interactive session. Then type 'exit' again to exit the screen session.
 
 
 

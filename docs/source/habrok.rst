@@ -38,3 +38,119 @@ Data on Habrok
 ------------------------------------
 
 The Computational Oncology group in the UMCG uses the hb-computational-oncology and hb-bioinfo-fehrmann groups. If you don't have access to these yet, please email your supervisor.
+
+
+.. _jupyter_lab:
+Using Jupyter Lab on Habrok
+------------------------------------
+
+It is possible to use Jupyter Lab on Habrok via the portal. It is however also possible to set a server up yourself, so you can also connect to it via Visual Studio Code. 
+
+Log in to one of the login nodes (hblogin1, hblogin2, etc.)
+
+.. code-block:: bash
+
+    ssh hblogin1
+
+
+Then open a screen session when logged into one of the nodes (hblogin1, hblogin2, etc.):
+
+.. code-block:: bash
+
+    screen -S jupyter_lab
+
+
+A screen session will open. We will use this screen session, so that we can easily return to it later. Next, request an interactive session like this:
+
+.. code-block:: bash
+
+    srun --cpus-per-task=4 --mem=64gb --nodes=1 --job-name=jupyter --time=23:59:59 --tmp=1000gb --gpu=a100:1--pty bash -i
+
+
+Modify this to your needs. In my example I request a GPU in addition to memory and CPU.
+
+Generally, using a separate environment for a specific pipeline or task is a good idea. In my case I will use Mamba. Create and activate a new environment like this:
+
+.. code-block:: bash
+
+    mamba create -n gpu_env python=3.14
+    mamba activate gpu_env
+    mamba install pip
+
+
+I will then install my required libraries, and jupyter lab itself:
+
+.. code-block:: bash
+
+    pip install matplotlib pandas numpy scikit-learn seaborn qrpca fastica_torch cupy-cuda13x 
+    pip install jupyterlab ipykernel
+
+
+If returning to this environment later, you do not need to install the libraries again, just activate the environment.
+
+.. code-block:: bash
+
+    mamba activate gpu_env
+
+
+Next we will start the jupyter lab server. We will specify the port, this port should be unique to the node.
+
+.. code-block:: bash
+
+    jupyter lab --port=8811 --no-browser
+
+
+Now we'll need two things. We need the token that is specified in the output of the command, and the node on which the server is running. The node is specified after your username. If you do not see this information, you can press CRTL+C, and then choose not to kill the session to get the token. In this example:
+
+.. code-block:: text
+
+    [I 2026-08-11 13:04:15.146 ServerApp] Serving notebooks from local directory: /scratch/hb-bioinfo-fehrmann/ComponentAnalyzerPortal/software/ComponentAnalyzerPortal/processing
+        1 active kernel
+        Jupyter Server 2.20.0 is running at:
+        http://localhost:8865/lab?token=1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13
+            http://127.0.0.1:8865/lab?token=1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13
+    Shut down this Jupyter server (y/[n])? [I 2026-08-11 13:04:20.151 ServerApp] No answer for 5s:
+    [I 2026-08-11 13:04:20.152 ServerApp] resuming operation...
+
+
+The token is <b>1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13</b> 
+
+To continue on, we need to leave the screen session for a moment. To do this, press CRTL+A, then D. This will detach the screen session. (don't worry if you did not get the node yet, I'll show you in a moment)
+
+If you did not get the node yet, you can find your currently running jobs with the command:
+
+.. code-block:: bash
+
+    squeue -u $USER
+
+
+Here, you should see the interactive job you just started. The node is specified in the column NODELIST. It is for example <b>a100gpu2</b>.
+
+Now we have both the token the node, and the port we selected. We will now forward that port on the node where originally connected to (hblogin1, hblogin2, etc.). While still on that node, we will do this with the following command:
+
+.. code-block:: bash
+
+    ssh -N -f -L localhost:8811:localhost:8811 a100gpu2
+
+
+In this example, see what we filled in the port and the node our interactive job is running on. In this example it makes it so that on hblogin1, port 8811 points to the same port on the node a100gpu2.
+
+Finally, we need to also do this forward on our local machine. Here we will forward a local port to the node we logged into (hblogin1, hblogin2, etc.). Go to a local terminal (so not on Habrok) and do this:
+
+.. code-block:: bash
+
+    ssh -N -f -L localhost:8811:localhost:8811 hblogin1
+
+
+Now, we can use jupyter lab in the browser, but going to that port in your browser. 
+
+.. image:: images/habrok/jupyterlabbrowser.png
+   :alt: jupyterlabbrowser
+   :width: 50%
+
+
+
+.. _rstudio_server:
+Using RStudio Server on Habrok
+------------------------------------
+

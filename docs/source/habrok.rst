@@ -102,18 +102,12 @@ Next we will start the jupyter lab server. We will specify the port, this port s
 
 Now we'll need two things. We need the token that is specified in the output of the command, and the node on which the server is running. The node is specified after your username. If you do not see this information, you can press CRTL+C, and then choose not to kill the session to get the token. In this example:
 
-.. code-block:: text
-
-    [I 2026-08-11 13:04:15.146 ServerApp] Serving notebooks from local directory: /scratch/hb-bioinfo-fehrmann/ComponentAnalyzerPortal/software/ComponentAnalyzerPortal/processing
-        1 active kernel
-        Jupyter Server 2.20.0 is running at:
-        http://localhost:8865/lab?token=1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13
-            http://127.0.0.1:8865/lab?token=1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13
-    Shut down this Jupyter server (y/[n])? [I 2026-08-11 13:04:20.151 ServerApp] No answer for 5s:
-    [I 2026-08-11 13:04:20.152 ServerApp] resuming operation...
+.. image:: images/habrok/jupyterlabtoken.png
+   :alt: jupyterlabtoken
+   :width: 80%
 
 
-The token is <b>1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13</b> 
+The token is **1af35983d28e66f8f9fcd9865b64706d7db7813a9f15cc13**
 
 To continue on, we need to leave the screen session for a moment. To do this, press CRTL+A, then D. This will detach the screen session. (don't worry if you did not get the node yet, I'll show you in a moment)
 
@@ -124,7 +118,12 @@ If you did not get the node yet, you can find your currently running jobs with t
     squeue -u $USER
 
 
-Here, you should see the interactive job you just started. The node is specified in the column NODELIST. It is for example <b>a100gpu2</b>.
+Here, you should see the interactive job you just started. The node is specified in the column NODELIST. It is for example **a100gpu2**.
+
+.. image:: images/habrok/jupyterlabnode.png
+   :alt: jupyterlabnode
+   :width: 80%
+
 
 Now we have both the token the node, and the port we selected. We will now forward that port on the node where originally connected to (hblogin1, hblogin2, etc.). While still on that node, we will do this with the following command:
 
@@ -146,7 +145,7 @@ Now, we can use jupyter lab in the browser, but going to that port in your brows
 
 .. image:: images/habrok/jupyterlabbrowser.png
    :alt: jupyterlabbrowser
-   :width: 50%
+   :width: 80%
 
 
 

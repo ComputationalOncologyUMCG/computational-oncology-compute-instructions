@@ -64,7 +64,7 @@ A screen session will open. We will use this screen session, so that we can easi
 
 .. code-block:: bash
 
-    srun --cpus-per-task=4 --mem=64gb --nodes=1 --job-name=jupyter --time=23:59:59 --tmp=1000gb --gpu=a100:1--pty bash -i
+    srun --cpus-per-task=4 --mem=64gb --nodes=1 --job-name=jupyter --time=23:59:59 --tmp=1000gb --gpu=a100:1 --pty bash -i
 
 
 Modify this to your needs. In my example I request a GPU in addition to memory and CPU.
@@ -258,3 +258,117 @@ Kill the jupyter lab server with CTRL+C, then select 'y' to confirm stopping it.
 Using RStudio Server on Habrok
 ------------------------------------
 
+Rstudio is available via the portal on Habrok, however an Rstudio-server image is available as well, with more preloaded libraries, and can be updated more easily by contacting the maintainer.
+
+Log in to one of the login nodes (hblogin1, hblogin2, etc.)
+
+.. code-block:: bash
+
+    ssh hblogin1
+
+
+Then open a screen session when logged into one of the nodes (hblogin1, hblogin2, etc.):
+
+.. code-block:: bash
+
+    screen -S rstudio_server
+
+
+A screen session will open. We will use this screen session, so that we can easily return to it later. Next, request an interactive session like this:
+
+.. code-block:: bash
+
+    srun --cpus-per-task=4 --mem=64gb --nodes=1 --job-name=jupyter --time=23:59:59 --tmp=1000gb --pty bash -i
+
+
+Modify this to your needs.
+
+Next, we can try to start Rstudio server. There is a small shell script available to do this.
+
+.. code-block:: bash
+
+    /scratch/hb-bioinfo-fehrmann/software/rstudio-server/start_server.sh
+
+
+If you are running this the first time, it will tell you that you have not selected a port to run on yet. It will tell you to which file to add the port.
+
+.. code-block:: text
+
+    no port selected in /home3/p1234567/SingularityImages/rstudio_server/etc/rserver.conf, add 'www-port=[portnr]' as for example 'www-port=8701' by selecting an available port
+
+
+Choose a port that is not in use. If you try to run with a port that is already in use, it will error when you try to start the server. You can then change the port. Use nano to add the port (use your own file it showed you a moment ago).
+
+.. code-block:: bash
+
+    nano /home3/p1234567/SingularityImages/rstudio_server/etc/rserver.conf
+
+
+And add **www-port=8701** with your actual port number. Then save and exit (CTRL+O, ENTER, CTRL+X). Now you can start the server again:
+
+.. code-block:: bash
+
+    /scratch/hb-bioinfo-fehrmann/software/rstudio-server/start_server.sh
+
+
+The message it should now be giving you is:
+
+.. code-block:: text
+
+    TTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home3/p1234567/.local/share/rstudio/log/rserver.log'.
+
+
+Now check what node your interactive job is running on. The node is specified after your username. If you do not see it, you can also get it in the next step.
+
+To continue on, we need to leave the screen session for a moment. To do this, press CRTL+A, then D. This will detach the screen session. (don't worry if you did not get the node yet, I'll show you in a moment)
+
+.. code-block:: bash
+
+    squeue -u $USER
+
+
+Here, you should see the interactive job you just started. The node is specified in the column NODELIST. It is for example **a100gpu2**.
+
+.. image:: images/habrok/jupyterlabnode.png
+   :alt: jupyterlabnode
+   :width: 80%
+
+
+Now we have both the token the node, and the port we selected. We will now forward that port on the node where originally connected to (hblogin1, hblogin2, etc.). While still on that node, we will do this with the following command:
+
+.. code-block:: bash
+
+    ssh -N -f -L localhost:8701:localhost:8701 a100gpu2
+
+
+Update the port and node in that example to your own.
+
+Finally, we need to also do this forward on our local machine. Here we will forward a local port to the node we logged into (hblogin1, hblogin2, etc.). Go to a local terminal (so not on Habrok) and do this:
+
+.. code-block:: bash
+
+    ssh -N -f -L localhost:8701:localhost:8701 hblogin1
+
+
+Now, we can use RStudio Server in the browser, by going to that port in your browser.
+
+.. image:: images/habrok/rstudiobrowser.png
+   :alt: rstudiobrowser
+   :width: 80%
+
+
+To stop an interactive session, and thus the rstudio server, first see which screen sessions are running. On the node you logged into (hblogin1, hblogin2, etc.) do this:
+
+.. code-block:: bash
+
+    screen -ls
+
+
+This will show you the screen sessions that are running. You can then re-attach to the screen by its name or ID:
+
+.. code-block:: bash
+
+    screen -r rstudio_server
+
+
+Kill the rstudio server with CTRL+C. Then type 'exit' to exit the interactive session. Then type 'exit' again to exit the screen session.

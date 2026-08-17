@@ -37,7 +37,7 @@ This will then allow you to use the aliases hblogin1, hblogin2, hbinter1, hbinte
 Data on Habrok
 ------------------------------------
 
-The Computational Oncology group in the UMCG uses the hb-computational-oncology and hb-bioinfo-fehrmann groups. If you don't have access to these yet, please email your supervisor.
+The Computational Oncology Group in the UMCG uses the hb-computational-oncology and hb-bioinfo-fehrmann groups. If you don't have access to these yet, please email your supervisor.
 
 
 .. _jupyter_lab:

@@ -1,4 +1,4 @@
-ReadTheDocs instructions for Computational resources in the Computational Oncology group
+ReadTheDocs instructions for Computational resources in the Computational Oncology Group
 =======================================
 
 This repository hosts the code that is used to generate the ReadTheDocs page hosted at https://computational-oncology-compute-instructions.readthedocs.io/en/

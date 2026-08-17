@@ -1,7 +1,7 @@
-Welcome to the compute documentation of the Computational Oncology group
+Welcome to the compute documentation of the Computational Oncology Group
 ==========================================================================
 
-This instructions web resource will guide you through compute resources available in the Computational Oncology group.
+This instructions web resource will guide you through compute resources available in the Computational Oncology Group.
 
 .. toctree::
    :maxdepth: 2

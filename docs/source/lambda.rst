@@ -99,7 +99,7 @@ If you get this error:
 
 .. image:: images/lambda/mambaactivateerror.png
    :alt: mambaactivateerror
-   :width: 50%
+   :width: 80%
 
 
 Paste this into your terminal:
@@ -120,7 +120,7 @@ You should see the name of the environment before your username in the terminal 
 
 .. image:: images/lambda/pipinstallinitial.png
    :alt: pipinstallinitial
-   :width: 50%
+   :width: 80%
 
 
 Then, try to install some packages into that environment:
@@ -134,7 +134,7 @@ Use the '+' button to open another terminal tab
 
 .. image:: images/lambda/opennewterminal.png
    :alt: opennewterminal
-   :width: 50%
+   :width: 80%
 
 
 In that new terminal, we'll activate the environment again, and start the jupyter server:
@@ -149,35 +149,35 @@ That should start the server. You should see a URL in the output:
 
 .. image:: images/lambda/jupyterlabcommand.png
    :alt: jupyterlabcommand
-   :width: 50%
+   :width: 80%
 
 
 Copy that URL into the browser:
 
 .. image:: images/lambda/openbrowser.png
    :alt: openbrowser
-   :width: 50%
+   :width: 80%
 
 
 Then that should open jupyter lab
 
 .. image:: images/lambda/openjupyter.png
    :alt: openjupyter
-   :width: 50%
+   :width: 80%
 
 
 Now if you are missing any libraries, you can go back to the terminal that is not running jupyter, and install via pip:
 
 .. image:: images/lambda/pipinstallmore.png
    :alt: pipinstallmore
-   :width: 50%
+   :width: 80%
 
 
 When you are done with the server, go back to the terminal where the server is running, and press CTRL+C, then 'y' to confirm
 
 .. image:: images/lambda/jupytershutdown.png
    :alt: jupytershutdown
-   :width: 50%
+   :width: 80%
 
 
 .. _rstudio_server:

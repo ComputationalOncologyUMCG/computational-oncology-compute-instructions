@@ -14,13 +14,13 @@ RUG HPC Habrok
 Habrok is the university cluster. This cluster is set up to crunch many jobs, and is shared amoung RUG employees and students. See :doc:`habrok` for more details.
 
 .. _bigmachines:
-Big Matchines (BMs)
+Big Machines (BMs)
 -----------------------------
 
-The Big Machines (BMs) are a set of four machines, available to Computational Oncology group within the UMCG, meant for heavy calculations. See :doc:`bigmachines` for more details.
+The Big Machines (BMs) are a set of four machines, available to Computational Oncology Group within the UMCG, meant for heavy calculations. See :doc:`bigmachines` for more details.
 
 .. _lambda:
 Lamba machine
 -----------------------------
 
-The Lamba machine is a small machine available in the Computational Oncology group within the UMCG, meant for lighter calculations and development. See :doc:`lambda` for more details.
+The Lamba machine is a small machine available in the Computational Oncology Group within the UMCG, meant for lighter calculations and development. See :doc:`lambda` for more details.

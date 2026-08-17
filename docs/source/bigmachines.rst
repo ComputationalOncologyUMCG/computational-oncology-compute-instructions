@@ -1,7 +1,7 @@
 Big Machines (BMs)
 ==================
 
-The Big Machines (BMs) are a set of four machines, available to Computational Oncology group within the UMCG, meant for heavy calculations. 
+The Big Machines (BMs) are a set of four machines, available to Computational Oncology Group within the UMCG, meant for heavy calculations. 
 
 
 .. _access:
@@ -79,7 +79,7 @@ These are the specifications of the different BMs
 Considerations
 --------------------------------------------
 
-The BMs are shared among the users in the Computational Oncology group. They are not managed by any job schedulers like SLURM. This gives more flexibility and potentially reduces overhead, but does give the users more responsibility. There are some important considerations to keep in mind:
+The BMs are shared among the users in the Computational Oncology Group. They are not managed by any job schedulers like SLURM. This gives more flexibility and potentially reduces overhead, but does give the users more responsibility. There are some important considerations to keep in mind:
 
 - do not fill the storage drives to capacity, this will cause the system to become unresponsive and eventually crash
 - do not use applications that can change the network status or routing of the machine (such as possible in Docker compose). This will mess up ssh routing and make the machines unreachable.

@@ -145,6 +145,7 @@ In that new terminal, we'll activate the environment again, and start the jupyte
     jupyter lab --port=8812 --no-browser
 
 
+Choose a port that is not in use.
 That should start the server. You should see a URL in the output:
 
 .. image:: images/lambda/jupyterlabcommand.png

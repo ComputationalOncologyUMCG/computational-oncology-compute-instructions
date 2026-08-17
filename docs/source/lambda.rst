@@ -57,7 +57,7 @@ If you get an error like this:
 
 .. image:: images/lambda/mambacreateerror.png
    :alt: mambacreateerror
-   :width: 50%
+   :width: 80%
 
 
 You need to create settings file for mamba. Paste this into your terminal:

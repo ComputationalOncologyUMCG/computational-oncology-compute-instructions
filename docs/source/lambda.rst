@@ -185,7 +185,74 @@ When you are done with the server, go back to the terminal where the server is r
 Using RStudio Server on Lambda
 ------------------------------------
 
+Rstudio is available via an Rstudio-server image, with preloaded libraries, and can be updated easily by contacting the maintainer.
 
+Log in to one of the login bms
+
+.. code-block:: bash
+
+    ssh bm1
+
+
+Then open a screen session when logged into one of the bms:
+
+.. code-block:: bash
+
+    screen -S rstudio_server
+
+
+A screen session will open. We will use this screen session, so that we can easily return to it later.
+
+Next, we can try to start Rstudio server. There is a small shell script available to do this.
+
+.. code-block:: bash
+
+    /home/shared/SingularityImages/start_server.sh
+
+
+If you are running this the first time, it will tell you that you have not selected a port to run on yet. It will tell you to which file to add the port.
+
+.. code-block:: text
+
+    no port selected in /home/username/SingularityImages/rstudio_server/etc/rserver.conf, add 'www-port=[portnr]' as for example 'www-port=8701' by selecting an available port
+
+
+And add **www-port=8701** with your actual port number. Then save and exit (CTRL+O, ENTER, CTRL+X). Now you can start the server again:
+
+.. code-block:: bash
+
+    /home/shared/SingularityImages/start_server.sh
+
+
+The message it should now be giving you is:
+
+.. code-block:: text
+
+    TTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home3/p1234567/.local/share/rstudio/log/rserver.log'.
+
+
+Now, we can use RStudio Server in the browser, by going to that port in your browser.
+
+.. image:: images/habrok/rstudiobrowser.png
+   :alt: rstudiobrowser
+   :width: 80%
+
+
+To stop an interactive session, and thus the rstudio server, first see which screen sessions are running:
+
+.. code-block:: bash
+
+    screen -ls
+
+
+This will show you the screen sessions that are running. You can then re-attach to the screen by its name or ID:
+
+.. code-block:: bash
+
+    screen -r rstudio_server
+
+
+Kill the rstudio server with CTRL+C. Then type 'exit' again to exit the screen session.
 
 
 .. _known_issues:

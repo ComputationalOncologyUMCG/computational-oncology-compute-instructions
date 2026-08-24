@@ -75,6 +75,13 @@ These are the specifications of the different BMs
 +---------+---------------+-----------------------------------+-------+-----------------------------------------+
 
 
+.. _storage:
+BM storage
+--------------------------------------------
+
+There is shared storage available on BM3 and BM4 at /home/shared/. Use this for joint projects and datasets, to make sure data is easy to find and not duplicated. This is not however fit for archiving, data that needs to be kept long-term, should be placed on the OneDrive.
+
+
 .. _considerations:
 Considerations
 --------------------------------------------

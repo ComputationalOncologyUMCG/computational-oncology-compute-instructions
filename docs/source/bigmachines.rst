@@ -97,7 +97,7 @@ The BMs are shared among the users in the Computational Oncology Group. They are
 
 
 .. _rstudio_server:
-Using RStudio Server on Lambda
+Using RStudio Server on BMs
 ------------------------------------
 
 Rstudio is available via an Rstudio-server image, with preloaded libraries, and can be updated easily by contacting the maintainer.

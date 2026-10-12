@@ -1,7 +1,7 @@
 Big Machines (BMs)
 ==================
 
-The Big Machines (BMs) are a set of four machines, available to Computational Oncology group within the UMCG, meant for heavy calculations. 
+The Big Machines (BMs) are a set of four machines, available to Computational Oncology Group within the UMCG, meant for heavy calculations. 
 
 
 .. _access:
@@ -75,11 +75,18 @@ These are the specifications of the different BMs
 +---------+---------------+-----------------------------------+-------+-----------------------------------------+
 
 
+.. _storage:
+BM storage
+--------------------------------------------
+
+There is shared storage available on BM3 and BM4 at /home/shared/. Use this for joint projects and datasets, to make sure data is easy to find and not duplicated. This is not however fit for archiving, data that needs to be kept long-term, should be placed on the OneDrive.
+
+
 .. _considerations:
 Considerations
 --------------------------------------------
 
-The BMs are shared among the users in the Computational Oncology group. They are not managed by any job schedulers like SLURM. This gives more flexibility and potentially reduces overhead, but does give the users more responsibility. There are some important considerations to keep in mind:
+The BMs are shared among the users in the Computational Oncology Group. They are not managed by any job schedulers like SLURM. This gives more flexibility and potentially reduces overhead, but does give the users more responsibility. There are some important considerations to keep in mind:
 
 - do not fill the storage drives to capacity, this will cause the system to become unresponsive and eventually crash
 - do not use applications that can change the network status or routing of the machine (such as possible in Docker compose). This will mess up ssh routing and make the machines unreachable.
@@ -87,3 +94,91 @@ The BMs are shared among the users in the Computational Oncology group. They are
 - try to estimate the amount of resources you will consume, and the amount of resources still available on the machine, to not crash process already running on the machine.
 - due to an inpending grant deadline, it might be that one of your colleagues has taken up a majority of the resources on the big machines. Please be understanding of these situations, while also taking into consideration what would be fair use.
 - only run work-related tasks on these machine unless you were granted permissions to do so. (No running your own Minecraft server or mining Bitcoins)
+
+
+.. _rstudio_server:
+Using RStudio Server on BMs
+------------------------------------
+
+Rstudio is available via an Rstudio-server image, with preloaded libraries, and can be updated easily by contacting the maintainer.
+
+Log in to the bm with ThinLinc, or with ssh
+
+.. code-block:: bash
+
+    ssh bm1
+
+
+Then open a screen session in the terminal when into the bm:
+
+.. code-block:: bash
+
+    screen -S rstudio_server
+
+
+A screen session will open. We will use this screen session, so that we can easily return to it later.
+
+Next, we can try to start Rstudio server. There is a small shell script available to do this.
+
+.. code-block:: bash
+
+    /home/shared/SingularityImages/start_server.sh
+
+
+If you are running this the first time, it will tell you that you have not selected a port to run on yet. It will tell you to which file to add the port.
+
+.. code-block:: text
+
+    no port selected in /home/username/SingularityImages/rstudio_server/etc/rserver.conf, add 'www-port=[portnr]' as for example 'www-port=8701' by selecting an available port
+
+
+And add **www-port=8701** with your actual port number. Then save and exit (CTRL+O, ENTER, CTRL+X). Now you can start the server again:
+
+.. code-block:: bash
+
+    /home/shared/SingularityImages/start_server.sh
+
+
+The message it should now be giving you is:
+
+.. code-block:: text
+
+    TTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home3/p1234567/.local/share/rstudio/log/rserver.log'.
+
+
+Now if you connected via ThinLinc, you can immediatly use RStudio Server in the browser, by going to that port in your browser.
+
+.. image:: images/habrok/rstudiobrowser.png
+   :alt: rstudiobrowser
+   :width: 80%
+
+
+To view Rstudio server from a browser on your local machine, forward the port on your local machine (make sure you are using the correct port and bm):
+
+.. code-block:: bash
+
+    ssh -N -f -L localhost:8701:localhost:8701 bm1
+
+
+And then, we can also use RStudio Server in the browser, by going to that port in your browser.
+
+.. image:: images/habrok/rstudiobrowser.png
+   :alt: rstudiobrowser
+   :width: 80%
+
+
+To stop an interactive session, and thus the rstudio server, go back to the bm and first see which screen sessions are running:
+
+.. code-block:: bash
+
+    screen -ls
+
+
+This will show you the screen sessions that are running. You can then re-attach to the screen by its name or ID:
+
+.. code-block:: bash
+
+    screen -r rstudio_server
+
+
+Kill the rstudio server with CTRL+C. Then type 'exit' again to exit the screen session.

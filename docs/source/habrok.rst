@@ -64,7 +64,7 @@ A screen session will open. We will use this screen session, so that we can easi
 
 .. code-block:: bash
 
-    srun --cpus-per-task=4 --mem=64gb --nodes=1 --job-name=jupyter --time=23:59:59 --tmp=1000gb --gpu=a100:1 --pty bash -i
+    srun --cpus-per-task=4 --mem=64gb --nodes=1 --job-name=jupyter --time=23:59:59 --tmp=1000gb --gpus-per-node=1 --pty bash -i
 
 
 Modify this to your needs. In my example I request a GPU in addition to memory and CPU.

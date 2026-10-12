@@ -187,14 +187,14 @@ Using RStudio Server on Lambda
 
 Rstudio is available via an Rstudio-server image, with preloaded libraries, and can be updated easily by contacting the maintainer.
 
-Log in to one of the login bms
+Log in to the lambda physically behind the machine, or with ssh
 
 .. code-block:: bash
 
-    ssh bm1
+    ssh yourusername@10.6.0.7
 
 
-Then open a screen session when logged into one of the bms:
+Then open a screen session in the terminal when logged the Lambda:
 
 .. code-block:: bash
 
@@ -231,7 +231,21 @@ The message it should now be giving you is:
     TTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home3/p1234567/.local/share/rstudio/log/rserver.log'.
 
 
-Now, we can use RStudio Server in the browser, by going to that port in your browser.
+Now if you were physically at the machine, we can use RStudio Server in the browser, by going to that port in your browser.
+
+.. image:: images/habrok/rstudiobrowser.png
+   :alt: rstudiobrowser
+   :width: 80%
+
+
+To view Rstudio server from a browser on your local machine, forward the port on your local machine (make sure you are using the correct port):
+
+.. code-block:: bash
+
+    ssh -N -f -L localhost:8701:localhost:8701 yourusername@10.6.0.7
+
+
+And then, we can also use RStudio Server in the browser, by going to that port in your browser.
 
 .. image:: images/habrok/rstudiobrowser.png
    :alt: rstudiobrowser

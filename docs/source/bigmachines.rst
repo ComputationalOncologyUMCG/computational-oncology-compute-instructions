@@ -20,7 +20,7 @@ Saving it in the default location is completely fine. Make note of the filename 
 By default, the key is saved in the .ssh folder. On Mac or Linux, you need to enable showing hidden files/folders to be able to find the file. There should be at least two files generated. The keyfile name and the keyfile name with .pub appended to the end. 
 The .pub file is the public part of your key, that you can share to be granted access to machines. The other file is your private key, and you should never share with anyone. Send the PUBLIC part of your key to the administrator, so you can be granted access to the BMs.
 
-In addition to the key, you also need to have the Global Secure Access Client application active to connect to the BMs. You can download this application `here <https://drive.google.com/file/d/1eAWGDCP_e9cTV2sRCwmx-YlTFp_NOFYn/view?usp=sharing>`_. Unzip the file and install the file for Windows or Mac OS.
+In addition to the key, you also need to have the Global Secure Access Client application active to connect to the BMs. You can download this application `here <https://drive.google.com/file/d/1Ll7D3y5unLWARqTQXEgrRC6yb1wcbx9B/view?usp=drive_link>`_. Unzip the file and install the file for Windows or Mac OS.
 
 
 .. _connect_cli:
